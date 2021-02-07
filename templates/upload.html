@@ -10,9 +10,9 @@
             background-position: center;
         }
         label{
-            font-size: 56px;
+            font-size: 30px;
             color: white;
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             text-align: center;
         }
         input #formFileLg {
@@ -20,15 +20,59 @@
             border-radius: 8px;
 
         }
+        .logo{
+            margin-top: 4%;
+            width: 50%;
+            box-sizing:border-box;
+            font-size: 20px;
+            align-items: center;
+            margin: auto;
+            text-align: center;
+
+        }
+        .upload{
+            margin-top: 4%;
+            /* border: 3px solid red; */
+            width: 50%;
+
+            box-sizing:border-box;
+            font-size: 20px;
+            /* margin-right: auto; */
+            align-items: center;            
+            /* margin-left: 10%; */
+            margin: auto;
+            text-align: center;
+            /* background: pink; */      
+            font-style: linear-gradient(#eee, #333);
+        }
+        #formFileLg {
+            /* display: block; */
+            overflow:hidden;
+            position: relative;
+            width: 40%;
+            border: 2px solid #ffedff;
+            background: #1f1dac;
+            color: #fff;
+            font: bold 11px 'Trebuchet MS';
+            padding: 4px;
+            opacity: 0.9;
+            cursor: pointer;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+        }
 
     </style>
 </head>
 <body>
+    <div class ="logo">
+        <img src="/static/RetroRoom_Square.png" width="300" alt="logo" />
+    </div>
     <form enctype="multipart/form-data" action="/upload" method="POST">
-        <div>
+        <div class ="upload">
             <label for="formFileLg">Upload your picture here!</label>
+            <!-- <button class ="btn">Upload</button> -->
             <input id="formFileLg" type="file" name="file" accept="image/*" capture="camera">
-            <button type="submit">Submit</button>
+            <!-- <button type="submit">Submit</button> -->
         </div>
     </form>
 
@@ -40,4 +84,5 @@
         }
         myInput.addEventListener('change', sendPic, false)
     </script>
+
 </body>
