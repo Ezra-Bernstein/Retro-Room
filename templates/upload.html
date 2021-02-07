@@ -6,8 +6,17 @@
     <form enctype="multipart/form-data" action="/upload" method="POST">
         <div>
             <label for="formFileLg">Upload your picture here!</label>
-            <input id="formFileLg" type="file" name="file">
+            <input id="formFileLg" type="file" name="file" accept="image/*" capture="camera">
             <button type="submit">Submit</button>
         </div>
     </form>
+
+    <script>
+        var myInput = document.getElementById('formFileLg')
+        function sendPic() {
+            var file = myInput.files[0];
+
+        }
+        myInput.addEventListener('change', sendPic, false)
+    </script>
 </body>
