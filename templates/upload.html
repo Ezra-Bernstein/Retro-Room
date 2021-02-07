@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <head>
     <title>Upload</title>
+    <style>
+        body{
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+        label{
+            font-size: 56px;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        input #formFileLg {
+            background-color: #ff0081;
+            border-radius: 8px;
+
+        }
+
+    </style>
 </head>
 <body>
     <form enctype="multipart/form-data" action="/upload" method="POST">
