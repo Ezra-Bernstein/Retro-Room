@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Retro</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">    
+        <style>
+            body{
+                background-image:url(background.jpg);
+                background-size: cover;
+                background-attachment: fixed;
+                font-family: 'Saira', sans-serif; 
+                background-color: #222; 
+                color: #FFF;             
+            }
+            .logo{
+                /* background-image: url(RetroRoom_Logo.png); */
+                /* width: 50%;
+                padding: 100px;
+                float: right; */
+                /* border: 3px solid red; */
+                padding-top: 4.3%;
+                width: 100%;
+                height: 50%;
+                display: block;
+                margin-right: auto;
+                text-align: center;
+                /* transform: rotate(-10deg); */
+            }
+            /* div.picture{
+                margin-top: 4%;
+                border: 3px solid red;
+                width: 40%;                
+                box-sizing:border-box;
+                 padding:10%; 
+                float: left;
+                text-align: center;
+                background: white;
+                border-radius:30%;
+
+            } */
+            
+            div.explain{
+                margin-top: 4%;
+                /* border: 3px solid red; */
+                width: 50%;
+                /* left: 50%; */
+                /* padding: 10%; */
+                /* float: right; */
+                box-sizing:border-box;
+                font-size: 20px;
+                /* text-align: center; */
+                /* margin-right: auto; */
+                align-items: center;
+                /* margin-left: 10%; */
+                margin: auto;
+                text-align: center;
+                /* background: pink; */
+                /* font: -webkit-linear-gradient(#eee, #333); */
+
+            }
+
+            .neon{
+            font-family:'Neon 80s';
+            /* background: -webkit-linear-gradient(#eee, #333); */
+
+            font-size:20px;
+            color:#ffedff;
+            padding:30px;
+            filter:url(#stroke) url(#inner-glow) url(#outer-glow) url(#outer-glow1);
+            }
+            /* ffedff */
+
+            /* NEXT Button */
+            a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 16px;
+            }
+            a:hover {
+            background-color: #023788;
+            color: black;
+            }
+
+            .model {
+            /* background-color: #15B2D3; */
+            border: 2px solid #ffedff;
+            color: white;
+            }
+    </style>
+    </head>
+    <body>
+        <div class ="logo">
+            <img src="RetroRoom_Logo.png" width="500" alt="logo" />
+        </div>
+        <!-- <div class ="picture">
+            <img src="computers.jpeg" width="400" alt="logo" />
+        </div> -->
+        <div class ="explain">
+            <div class="centered">
+                <div class="neon"><p>
+                Welcome to Retro Room, an interactive, AR web application that allows to take a photo of something around you, and see what it looked like in the past! For example, take a photo of a computer to see how it looked in previous decades, as an AR object right in front of you! 
+                <br>Click the button below to get started by snapping a photo.
+            </p>
+        </div>
+    </div>
+            <a href="model.html" class="model">&#8250; LET'S START</a>
+        </div>
+
+<svg >
+    <defs>
+      
+       <filter id="stroke">
+         <feMorphology operator="dilate" radius="1" 
+    in="SourceGraphic" result="outside" />
+         <feMorphology operator="dilate" radius="2" 
+    in="outside" result="thickened" />
+         <feComposite operator="out" in2="SourceGraphic" in="thickened" result="stroke"/>
+         
+      </filter>
+      
+      <filter id="inner-glow" >
+        <feFlood flood-color="#023788"/>
+        <feComposite in2="SourceAlpha" operator="out"/>
+        <feGaussianBlur stdDeviation="0.5" result="blur"/>
+        <feComposite operator="atop" in2="SourceGraphic"/>
+        
+    </filter>
+      
+      <filter id="outer-glow" >
+            <feMorphology operator="dilate" radius="2" in="SourceAlpha" result="thicken" />
+    
+            <feGaussianBlur in="thicken" stdDeviation="5" result="blurred" />
+    
+            <feFlood  flood-color="#023788" result="glowColor" />
+    
+            <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+    
+            <feMerge>
+                <feMergeNode in="softGlow_colored"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+    
+        </filter>
+      
+      <filter id="outer-glow1" >
+            <feMorphology operator="dilate" radius="20" in="SourceAlpha" result="thicken" />
+    
+            <feGaussianBlur in="thicken" stdDeviation="25" result="blurred" />
+    
+            <feFlood  flood-color="#023788" result="glowColor" />
+    
+            <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+    
+            <feMerge>
+                <feMergeNode in="softGlow_colored"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+    
+        </filter>
+      </defs>
+      
+      
+    </svg>
+    </body>
+</html>
