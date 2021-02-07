@@ -66,25 +66,64 @@
         </style>
     
     </head>
-    <body>
+    <body onload="updateIframe(1950);"">
 	    <div id="background"></div>
         <h1>Embedded WebAR Experience through echoAR</h1>
         <iframe
-            src="https://console.echoar.xyz/webar?key=<API-KEY>&entry=<ENTRY-ID>"
-            title="echoAR WebAR iframe element">
+            src="https://google.com"
+            title="echoAR WebAR iframe element" id="iframe" ">
         </iframe>
         <div class="slidecontainer">
-            <input type="range" min="1950" max="1980" value="1950" step="10" class="slider" id="myRange">
+            <input type="range" min="1950" max="1990" value="1950" step="10" class="slider" id="myRange">
         </div>
         <p id = "output"></p>
         <script>
             var slider = document.getElementById("myRange");
             var output = document.getElementById("output");
+            var year = 1950
             output.innerHTML = slider.value; // Display the default slider value
             
             // Update the current slider value (each time you drag the slider handle)
             slider.oninput = function() {
               output.innerHTML = this.value;
+              year = this.value
+              console.log(year)
+              updateIframe(year)
+            }
+
+            function updateIframe(year) {
+
+                var echoDB;
+
+                // Query echoAR
+                console.log(year)
+                fetch('https://console.echoAR.xyz/query?key=<API_KEY>data=year&value=' + year)
+                .then((response) => response.json())
+                .then((json) => {
+                // Store database
+                echoDB = json; // The JSON response
+                console.log(echoDB)
+                db = echoDB.db
+                console.log(db)
+
+                /* Parse echoAR database */
+                var entries = []
+                var newID = "87944df1-05d5-4206-8ed7-37bb8d1878e9"
+                for (var entry in db) { // Iterage over all database entries
+                    // Parse entry
+                        console.log(entry)
+                        console.log(db[entry]["id"])
+                        console.log(db[entry]["additionalData"]["year"])
+                        console.log(db[entry]["additionalData"]["object-type"])
+                        if (db[entry]["additionalData"]["object-type"]=="{{ modelType }}") {
+                            newID = db[entry]["id"]
+                        }
+                }
+                document.getElementById('iframe').src = "https://console.echoar.xyz/webar?key=<API_KEY>entry=" + newID;
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
             }
         </script>
     </body>
