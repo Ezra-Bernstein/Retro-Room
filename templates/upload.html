@@ -67,7 +67,7 @@
     <div class ="logo">
         <img src="/static/RetroRoom_Square.png" width="300" alt="logo" />
     </div>
-    <form enctype="multipart/form-data" action="/upload" method="POST">
+    <form enctype="multipart/form-data" action="/upload" method="POST"  name="uploadForm">
         <div class ="upload">
             <label for="formFileLg">Upload your picture here!</label>
             <!-- <button class ="btn">Upload</button> -->
@@ -79,8 +79,7 @@
     <script>
         var myInput = document.getElementById('formFileLg')
         function sendPic() {
-            var file = myInput.files[0];
-
+            document.uploadForm.submit()
         }
         myInput.addEventListener('change', sendPic, false)
     </script>
